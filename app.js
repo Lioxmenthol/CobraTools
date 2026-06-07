@@ -154,11 +154,21 @@ function openHero(heroName){
 
     setTimeout(function(){
 
-        heroPage.style.display =
-        "none";
+        heroPage.classList.remove(
+"page-visible"
+);
 
-        skinPage.style.display =
-        "block";
+heroPage.classList.add(
+"page-hidden"
+);
+
+skinPage.classList.remove(
+"page-hidden"
+);
+
+skinPage.classList.add(
+"page-visible"
+);
 
         skinPage.classList.remove(
             "page-enter"
@@ -253,11 +263,21 @@ function(){
 
     setTimeout(function(){
 
-        skinPage.style.display =
-        "none";
+        skinPage.classList.remove(
+"page-visible"
+);
 
-        heroPage.style.display =
-        "block";
+skinPage.classList.add(
+"page-hidden"
+);
+
+heroPage.classList.remove(
+"page-hidden"
+);
+
+heroPage.classList.add(
+"page-visible"
+);
 
         heroPage.classList.remove(
             "page-enter"
