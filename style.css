@@ -38,18 +38,16 @@ font-weight:bold;
 #skinList{
 display:grid;
 grid-template-columns:
-repeat(auto-fill,minmax(120px,1fr));
-gap:15px;
-padding:15px;
+repeat(4,1fr);
+gap:8px;
+padding:8px;
 }
 
 .card{
 background:#111;
 border:2px solid #FFD700;
-border-radius:20px;
+border-radius:12px;
 overflow:hidden;
-cursor:pointer;
-transition:.2s;
 }
 
 .card:hover{
@@ -58,15 +56,19 @@ transform:scale(0.96);
 
 .card img{
 width:100%;
-height:130px;
+height:80px;
 object-fit:cover;
 }
 
 .card-title{
-padding:6px;
-font-size:13px;
+padding:4px;
+font-size:10px;
+font-weight:700;
 text-align:center;
-font-weight:bold;
+
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
 
 .download-btn{
