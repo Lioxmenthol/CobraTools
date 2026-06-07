@@ -26,21 +26,19 @@ document.getElementById("heroTitle");
 // LOAD HERO
 // ======================
 fetch(HERO_JSON)
-.then(r => r.json())
-.then(data => {
+.then(function(r){
+    return r.json();
+})
+.then(function(data){
 
-```
-allHeroes = data;
+    allHeroes = data;
 
-renderHeroes(data);
-```
+    renderHeroes(data);
 
 })
-.catch(err => {
+.catch(function(err){
 
-```
-console.log(err);
-```
+    console.log("Hero JSON Error:", err);
 
 });
 
@@ -48,19 +46,17 @@ console.log(err);
 // LOAD SKIN
 // ======================
 fetch(SKIN_JSON)
-.then(r => r.json())
-.then(data => {
+.then(function(r){
+    return r.json();
+})
+.then(function(data){
 
-```
-allSkins = data;
-```
+    allSkins = data;
 
 })
-.catch(err => {
+.catch(function(err){
 
-```
-console.log(err);
-```
+    console.log("Skin JSON Error:", err);
 
 });
 
@@ -69,37 +65,30 @@ console.log(err);
 // ======================
 function renderHeroes(data){
 
-```
-heroList.innerHTML = "";
+    heroList.innerHTML = "";
 
-data.forEach(hero => {
+    data.forEach(function(hero){
 
-    const card =
-    document.createElement("div");
+        const card =
+        document.createElement("div");
 
-    card.className = "card";
+        card.className = "card";
 
-    card.innerHTML = `
-    <img
-    src="${hero.URL}"
-    loading="lazy"
-    onerror="this.src='https://via.placeholder.com/300x300?text=Hero'">
+        card.innerHTML =
+        '<img src="' + hero.URL + '" loading="lazy">' +
+        '<div class="card-title">' +
+        hero.her +
+        '</div>';
 
-    <div class="card-title">
-    ${hero.her}
-    </div>
-    `;
+        card.onclick = function(){
 
-    card.onclick = () => {
+            openHero(hero.her);
 
-        openHero(hero.her);
+        };
 
-    };
+        heroList.appendChild(card);
 
-    heroList.appendChild(card);
-
-});
-```
+    });
 
 }
 
@@ -108,55 +97,46 @@ data.forEach(hero => {
 // ======================
 function openHero(heroName){
 
-```
-history.pushState(
-{
-    page:"skin",
-    hero:heroName
-},
-"",
-"#" + heroName
-);
+    history.pushState(
+    {
+        page:"skin",
+        hero:heroName
+    },
+    "",
+    "#" + heroName
+    );
 
-heroPage.style.display = "none";
-skinPage.style.display = "block";
+    heroPage.style.display = "none";
+    skinPage.style.display = "block";
 
-heroTitle.innerText = heroName;
+    heroTitle.innerText = heroName;
 
-skinList.innerHTML = "";
+    skinList.innerHTML = "";
 
-Object.values(allSkins)
-.forEach(skin => {
+    Object.values(allSkins)
+    .forEach(function(skin){
 
-    if(skin.hero !== heroName) return;
+        if(skin.hero !== heroName){
+            return;
+        }
 
-    const card =
-    document.createElement("div");
+        const card =
+        document.createElement("div");
 
-    card.className = "card";
+        card.className = "card";
 
-    card.innerHTML = `
-    <img
-    src="${skin.img}"
-    loading="lazy"
-    onerror="this.src='https://via.placeholder.com/300x300?text=Skin'">
+        card.innerHTML =
+        '<img src="' + skin.img + '" loading="lazy">' +
+        '<div class="card-title">' +
+        skin.skin_name +
+        '</div>' +
+        '<a class="download-btn" href="#" onclick="downloadSkin(\'' +
+        skin.url +
+        '\');return false;">DOWNLOAD</a>';
 
-    <div class="card-title">
-    ${skin.skin_name}
-    </div>
+        skinList.appendChild(card);
 
-    <a
-    class="download-btn"
-    href="#"
-    onclick="downloadSkin('${skin.url}');return false;">
-    DOWNLOAD
-    </a>
-    `;
-
-    skinList.appendChild(card);
-
-});
-```
+    });
 
 }
 
@@ -164,11 +144,9 @@ Object.values(allSkins)
 // BACK BUTTON WEBSITE
 // ======================
 document.getElementById("backBtn")
-.onclick = () => {
+.onclick = function(){
 
-```
-history.back();
-```
+    history.back();
 
 };
 
@@ -179,13 +157,11 @@ window.addEventListener(
 "popstate",
 function(){
 
-```
-heroPage.style.display =
-"block";
+    heroPage.style.display =
+    "block";
 
-skinPage.style.display =
-"none";
-```
+    skinPage.style.display =
+    "none";
 
 }
 );
@@ -196,25 +172,23 @@ skinPage.style.display =
 document.getElementById("searchBox")
 .addEventListener(
 "input",
-e => {
+function(e){
 
-```
-const key =
-e.target.value
-.toLowerCase();
+    const key =
+    e.target.value
+    .toLowerCase();
 
-renderHeroes(
+    renderHeroes(
 
-    allHeroes.filter(h =>
+        allHeroes.filter(function(h){
 
-        h.her
-        .toLowerCase()
-        .includes(key)
+            return h.her
+            .toLowerCase()
+            .includes(key);
 
-    )
+        })
 
-);
-```
+    );
 
 }
 );
@@ -224,20 +198,19 @@ renderHeroes(
 // ======================
 function downloadSkin(url){
 
-```
-try{
+    try{
 
-    window.location.href =
-    "cobratools://download?url="
-    + encodeURIComponent(url);
+        window.location.href =
+        "cobratools://download?url=" +
+        encodeURIComponent(url);
 
-}catch(e){
+    }
+    catch(e){
 
-    alert(
-    "Cobra Tools belum terinstall"
-    );
+        alert(
+        "Cobra Tools belum terinstall"
+        );
 
-}
-```
+    }
 
 }
