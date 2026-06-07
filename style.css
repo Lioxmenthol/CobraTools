@@ -48,8 +48,19 @@ background:#111;
 border:2px solid #FFD700;
 border-radius:12px;
 overflow:hidden;
+
+transition:
+transform .15s ease,
+box-shadow .15s ease;
+
+cursor:pointer;
 }
 
+.card:active{
+
+transform:scale(0.95);
+
+}
 .card:hover{
 transform:scale(0.96);
 }
