@@ -74,16 +74,19 @@ text-overflow:ellipsis;
 .download-btn{
 display:block;
 
-width:70%;
+width:65%;
 
-margin:3px auto 5px auto;
+margin:4px auto;
 
-padding:2px 0;
+padding:1px 2px !important;
+
+height:18px;
+line-height:18px;
 
 background:#FFD700;
-color:#000;
+color:#000 !important;
 
-font-size:7px;
+font-size:6px !important;
 font-weight:700;
 
 text-align:center;
@@ -91,6 +94,12 @@ text-decoration:none;
 
 border-radius:999px;
 border:1px solid #000;
+
+box-sizing:border-box;
+
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
 }
 
 #backBtn{
