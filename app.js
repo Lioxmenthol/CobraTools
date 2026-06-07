@@ -23,11 +23,39 @@ const heroTitle =
 document.getElementById("heroTitle");
 
 // ======================
+// IMAGE PROXY
+// ======================
+function getImageUrl(url){
+
+    if(!url) return "";
+
+    if(
+        url.includes(
+            "static.wikia.nocookie.net"
+        )
+    ){
+
+        return "https://images.weserv.nl/?url="
+        +
+        encodeURIComponent(
+            url.replace(
+                /^https?:\/\//,
+                ""
+            )
+        );
+    }
+
+    return url;
+}
+
+// ======================
 // LOAD HERO
 // ======================
 fetch(HERO_JSON)
 .then(function(r){
+
     return r.json();
+
 })
 .then(function(data){
 
@@ -38,7 +66,10 @@ fetch(HERO_JSON)
 })
 .catch(function(err){
 
-    console.log("Hero JSON Error:", err);
+    console.log(
+        "Hero JSON Error:",
+        err
+    );
 
 });
 
@@ -47,7 +78,9 @@ fetch(HERO_JSON)
 // ======================
 fetch(SKIN_JSON)
 .then(function(r){
+
     return r.json();
+
 })
 .then(function(data){
 
@@ -56,7 +89,10 @@ fetch(SKIN_JSON)
 })
 .catch(function(err){
 
-    console.log("Skin JSON Error:", err);
+    console.log(
+        "Skin JSON Error:",
+        err
+    );
 
 });
 
@@ -72,21 +108,33 @@ function renderHeroes(data){
         const card =
         document.createElement("div");
 
-        card.className = "card";
+        card.className =
+        "card";
 
         card.innerHTML =
-        '<img src="' + hero.URL + '" loading="lazy">' +
+        '<img ' +
+        'src="' +
+        getImageUrl(hero.URL) +
+        '" ' +
+        'loading="lazy" ' +
+        'referrerpolicy="no-referrer" ' +
+        'onerror="this.src=\'https://via.placeholder.com/300x300?text=Hero\'">' +
         '<div class="card-title">' +
         hero.her +
         '</div>';
 
-        card.onclick = function(){
+        card.onclick =
+        function(){
 
-            openHero(hero.her);
+            openHero(
+                hero.her
+            );
 
         };
 
-        heroList.appendChild(card);
+        heroList.appendChild(
+            card
+        );
 
     });
 
@@ -106,27 +154,44 @@ function openHero(heroName){
     "#" + heroName
     );
 
-    heroPage.style.display = "none";
-    skinPage.style.display = "block";
+    heroPage.style.display =
+    "none";
 
-    heroTitle.innerText = heroName;
+    skinPage.style.display =
+    "block";
 
-    skinList.innerHTML = "";
+    heroTitle.innerText =
+    heroName;
+
+    skinList.innerHTML =
+    "";
 
     Object.values(allSkins)
     .forEach(function(skin){
 
-        if(skin.hero !== heroName){
+        if(
+            skin.hero !==
+            heroName
+        ){
             return;
         }
 
         const card =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-        card.className = "card";
+        card.className =
+        "card";
 
         card.innerHTML =
-        '<img src="' + skin.img + '" loading="lazy">' +
+        '<img ' +
+        'src="' +
+        getImageUrl(skin.img) +
+        '" ' +
+        'loading="lazy" ' +
+        'referrerpolicy="no-referrer" ' +
+        'onerror="this.src=\'https://via.placeholder.com/300x300?text=Skin\'">' +
         '<div class="card-title">' +
         skin.skin_name +
         '</div>' +
@@ -134,24 +199,28 @@ function openHero(heroName){
         skin.url +
         '\');return false;">DOWNLOAD</a>';
 
-        skinList.appendChild(card);
+        skinList.appendChild(
+            card
+        );
 
     });
 
 }
 
 // ======================
-// BACK BUTTON WEBSITE
+// BACK WEBSITE
 // ======================
-document.getElementById("backBtn")
-.onclick = function(){
+document.getElementById(
+    "backBtn"
+).onclick =
+function(){
 
     history.back();
 
 };
 
 // ======================
-// BACK BUTTON HP
+// BACK HP
 // ======================
 window.addEventListener(
 "popstate",
@@ -169,7 +238,10 @@ function(){
 // ======================
 // SEARCH HERO
 // ======================
-document.getElementById("searchBox")
+document
+.getElementById(
+    "searchBox"
+)
 .addEventListener(
 "input",
 function(e){
@@ -180,13 +252,15 @@ function(e){
 
     renderHeroes(
 
-        allHeroes.filter(function(h){
+        allHeroes.filter(
+            function(h){
 
-            return h.her
-            .toLowerCase()
-            .includes(key);
+                return h.her
+                .toLowerCase()
+                .includes(key);
 
-        })
+            }
+        )
 
     );
 
@@ -201,8 +275,11 @@ function downloadSkin(url){
     try{
 
         window.location.href =
-        "cobratools://download?url=" +
-        encodeURIComponent(url);
+        "cobratools://download?url="
+        +
+        encodeURIComponent(
+            url
+        );
 
     }
     catch(e){
