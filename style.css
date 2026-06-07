@@ -247,3 +247,35 @@ translateY(0);
 }
 
 }
+
+.page{
+position:absolute;
+left:0;
+top:0;
+width:100%;
+
+transition:
+opacity .25s ease,
+transform .25s ease;
+
+}
+
+.page-hidden{
+
+opacity:0;
+pointer-events:none;
+
+transform:
+translateX(20px);
+
+}
+
+.page-visible{
+
+opacity:1;
+pointer-events:auto;
+
+transform:
+translateX(0);
+
+}
