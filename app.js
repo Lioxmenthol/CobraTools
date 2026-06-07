@@ -148,65 +148,83 @@ function renderHeroes(data){
 // ======================
 function openHero(heroName){
 
-    history.pushState(
-    {
-        page:"skin",
-        hero:heroName
-    },
-    "",
-    "#" + heroName
+    heroPage.classList.add(
+        "page-exit"
     );
 
-    heroPage.style.display =
-    "none";
+    setTimeout(function(){
 
-    skinPage.style.display =
-    "block";
+        heroPage.style.display =
+        "none";
 
-    heroTitle.innerText =
-    heroName;
+        skinPage.style.display =
+        "block";
 
-    skinList.innerHTML =
-    "";
-
-    Object.values(allSkins)
-    .forEach(function(skin){
-
-        if(
-            skin.hero !==
-            heroName
-        ){
-            return;
-        }
-
-        const card =
-        document.createElement(
-            "div"
+        skinPage.classList.remove(
+            "page-enter"
         );
 
-        card.className =
-        "card";
+        void skinPage.offsetWidth;
 
-        card.innerHTML =
-        '<img ' +
-        'src="' +
-        getImageUrl(skin.img) +
-        '" ' +
-        'loading="lazy" ' +
-        'referrerpolicy="no-referrer" ' +
-        'onerror="this.src=\'https://via.placeholder.com/300x300?text=Skin\'">' +
-        '<div class="card-title">' +
-        skin.skin_name +
-        '</div>' +
-        '<a class="download-btn" href="#" onclick="downloadSkin(\'' +
-        skin.url +
-        '\');return false;">DOWNLOAD</a>';
-
-        skinList.appendChild(
-            card
+        skinPage.classList.add(
+            "page-enter"
         );
 
-    });
+        history.pushState(
+        {
+            page:"skin",
+            hero:heroName
+        },
+        "",
+        "#" + heroName
+        );
+
+        heroTitle.innerText =
+        heroName;
+
+        skinList.innerHTML =
+        "";
+
+        Object.values(allSkins)
+        .forEach(function(skin){
+
+            if(
+                skin.hero !==
+                heroName
+            ){
+                return;
+            }
+
+            const card =
+            document.createElement(
+                "div"
+            );
+
+            card.className =
+            "card";
+
+            card.innerHTML =
+            '<img ' +
+            'src="' +
+            getImageUrl(skin.img) +
+            '" ' +
+            'loading="lazy">' +
+
+            '<div class="card-title">' +
+            skin.skin_name +
+            '</div>' +
+
+            '<a class="download-btn" href="#" onclick="downloadSkin(\'' +
+            skin.url +
+            '\');return false;">DOWNLOAD</a>';
+
+            skinList.appendChild(
+                card
+            );
+
+        });
+
+    },150);
 
 }
 
@@ -224,16 +242,34 @@ function(){
 
 // ======================
 // BACK HP
-// ======================
+// =====================
 window.addEventListener(
 "popstate",
 function(){
 
-    heroPage.style.display =
-    "block";
+    skinPage.classList.add(
+        "page-exit"
+    );
 
-    skinPage.style.display =
-    "none";
+    setTimeout(function(){
+
+        skinPage.style.display =
+        "none";
+
+        heroPage.style.display =
+        "block";
+
+        heroPage.classList.remove(
+            "page-enter"
+        );
+
+        void heroPage.offsetWidth;
+
+        heroPage.classList.add(
+            "page-enter"
+        );
+
+    },150);
 
 }
 );
