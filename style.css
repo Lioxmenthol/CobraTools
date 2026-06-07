@@ -72,34 +72,31 @@ text-overflow:ellipsis;
 }
 
 .download-btn{
-display:block;
+display:block !important;
 
-width:65%;
+width:65% !important;
 
-margin:4px auto;
+margin:3px auto !important;
 
-padding:1px 2px !important;
+padding:0 !important;
 
-height:18px;
-line-height:18px;
-
-background:#FFD700;
-color:#000 !important;
+height:16px !important;
+line-height:16px !important;
 
 font-size:6px !important;
-font-weight:700;
+font-weight:700 !important;
 
-text-align:center;
-text-decoration:none;
+background:#FFD700 !important;
+color:#000 !important;
 
-border-radius:999px;
-border:1px solid #000;
+border-radius:999px !important;
+border:1px solid #000 !important;
 
-box-sizing:border-box;
+text-decoration:none !important;
+text-align:center !important;
 
-overflow:hidden;
-white-space:nowrap;
-text-overflow:ellipsis;
+overflow:hidden !important;
+white-space:nowrap !important;
 }
 
 #backBtn{
