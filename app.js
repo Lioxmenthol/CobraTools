@@ -29,23 +29,26 @@ function getImageUrl(url){
 
     if(!url) return "";
 
-    if(
-        url.includes(
-            "static.wikia.nocookie.net"
-        )
-    ){
+    // FIX URL WIKIA
+    if(url.includes("static.wikia.nocookie.net")){
 
-        return "https://images.weserv.nl/?url="
-        +
-        encodeURIComponent(
-            url.replace(
-                /^https?:\/\//,
-                ""
-            )
-        );
+        const pos =
+        url.indexOf("/revision/");
+
+        if(pos !== -1){
+
+            url =
+            url.substring(
+                0,
+                pos
+            );
+
+        }
+
     }
 
     return url;
+
 }
 
 // ======================
