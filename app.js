@@ -197,6 +197,8 @@ function openHero(heroName){
         '</div>' +
         '<a class="download-btn" href="#" onclick="downloadSkin(\'' +
         skin.url +
+        '\',\'' +
+        skin.skin_name.replace(/'/g,"\\'") +
         '\');return false;">DOWNLOAD</a>';
 
         skinList.appendChild(
@@ -270,22 +272,20 @@ function(e){
 // ======================
 // DOWNLOAD
 // ======================
-function downloadSkin(url){
+function downloadSkin(url, skinName){
 
     try{
 
         window.location.href =
         "cobratools://download?url="
-        +
-        encodeURIComponent(
-            url
-        );
+        + encodeURIComponent(url)
+        + "&name="
+        + encodeURIComponent(skinName);
 
-    }
-    catch(e){
+    }catch(e){
 
         alert(
-        "Cobra Tools belum terinstall"
+            "Cobra Tools belum terinstall"
         );
 
     }
