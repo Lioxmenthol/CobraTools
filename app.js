@@ -272,8 +272,22 @@ function(e){
 // ======================
 // DOWNLOAD
 // ======================
-function downloadSkin(){
+function downloadSkin(url, skinName){
 
-    alert("Coming Soon");
+    try{
+
+        window.location.href =
+        "cobratools://download?url="
+        + encodeURIComponent(url)
+        + "&name="
+        + encodeURIComponent(skinName);
+
+    }catch(e){
+
+        alert(
+            "Cobra Tools belum terinstall"
+        );
+
+    }
 
 }
