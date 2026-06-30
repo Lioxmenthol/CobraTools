@@ -5,26 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cobra Tools</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111;
+    color:#FFD700;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+.container h1{
+    font-size:70px;
+    font-weight:bold;
+    letter-spacing:5px;
+    text-shadow:0 0 15px #FFD700;
+}
+
+.container p{
+    margin-top:20px;
+    font-size:24px;
+    color:#fff;
+}
+</style>
+
 </head>
 <body>
 
-<header>
-<h1>COBRA TOOLS</h1>
-<input id="searchBox" type="text" placeholder="Search Hero...">
-</header>
-
-<div id="heroPage">
-<div id="heroList"></div>
+<div class="container">
+    <h1>COMING SOON</h1>
+    <p>Feature is under development.</p>
 </div>
-
-<div id="skinPage" style="display:none;">
-<button id="backBtn">← Back</button>
-<h2 id="heroTitle"></h2>
-<div id="skinList"></div>
-</div>
-
-<script src="app.js"></script>
 
 </body>
 </html>
