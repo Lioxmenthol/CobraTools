@@ -1,30 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cobra Tools</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leon Tools - Versi Beta</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-<h1>COBRA TOOLS</h1>
-<input id="searchBox" type="text" placeholder="Search Hero...">
+    <h1>LEON TOOLS VERSI BETA</h1>
+    <p style="color: #ff4d4d; font-weight: bold; text-align: center;">
+        🔴 AKUN GOOGLE KALIAN WAJIB SAMA YAH DENGAN AKUN GOOGLE DI PLAYSTORE SAAT BERGABUNG / JOIN GROUP PENGUJIAN BETA KAMI
+    </p>
+    <input id="searchBox" type="text" placeholder="Cari info atau tutorial..." onkeyup="filterText()">
 </header>
 
-<div id="heroPage">
-<div id="heroList"></div>
-</div>
+<main id="heroPage">
+    <div id="heroList" style="display: flex; flex-direction: column; gap: 15px; padding: 10px;">
+        
+        <!-- Pengumuman Utama -->
+        <div class="content-item" style="border-left: 4px solid #00c853; padding-left: 10px;">
+            <h3>📢 PENGUMUMAN BETA</h3>
+            <p>JOIN DAN INSTAL APK BARU KAMI DALAM TAHAP VERSI BETA MENUJU PUBLIK</p>
+            <small>👉 Tutorial download Leon Tools ada di No. 4</small>
+        </div>
 
-<div id="skinPage" style="display:none;">
-<button id="backBtn">← Back</button>
-<h2 id="heroTitle"></h2>
-<div id="skinList"></div>
-</div>
+        <!-- Langkah 1 -->
+        <div class="content-item" style="border-left: 4px solid #29b6f6; padding-left: 10px;">
+            <h3>1. Join Komunitas Tester</h3>
+            <p>Join & Bergabung dengan Leon Tools Versi Beta Klik ini dulu:</p>
+            <a href="https://groups.google.com/d/forum/komunitas-tester-leontools" target="_blank">https://groups.google.com/d/forum/komunitas-tester-leontools</a>
+        </div>
 
-<script src="app.js"></script>
+        <!-- Langkah 2 -->
+        <div class="content-item" style="border-left: 4px solid #29b6f6; padding-left: 10px;">
+            <h3>2. Bergabung ke Pengujian</h3>
+            <p>Kalau sudah lanjut, Bergabung dan Klik ini lagi:</p>
+            <a href="https://play.google.com/apps/testing/com.leons.tools" target="_blank">https://play.google.com/apps/testing/com.leons.tools</a>
+        </div>
+
+        <!-- Langkah 3 -->
+        <div class="content-item" style="border-left: 4px solid #29b6f6; padding-left: 10px;">
+            <h3>3. Download & Beri Ulasan</h3>
+            <p>Lanjut lagi, klik download dan jangan lupa ulasan 5⭐ nya ya gaes ya:</p>
+            <a href="https://play.google.com/store/apps/details?id=com.leons.tools" target="_blank">https://play.google.com/store/apps/details?id=com.leons.tools</a>
+        </div>
+
+        <!-- Langkah 4 -->
+        <div class="content-item" style="border-left: 4px solid #ffca28; padding-left: 10px;">
+            <h3>4. Tutorial Pakai & Download Apk Leon Tools 👇🏻</h3>
+            
+            <div style="margin-bottom: 10px;">
+                <p>🔥 TUTORIAL DOWNLOAD LEON TOOLS VERSI BETA :</p>
+                <a href="https://vt.tiktok.com/ZSVjvtPGR/" target="_blank">https://vt.tiktok.com/ZSVjvtPGR/</a>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <p>🔥 TUTORIAL IZIN DEFAULT :</p>
+                <a href="https://youtu.be/c-uWPqcvETs?si=9ZFuzC9mYswOOhR7" target="_blank">https://youtu.be/c-uWPqcvETs?si=9ZFuzC9mYswOOhR7</a>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <p>🔥 TUTORIAL IZIN SHIZUKU :</p>
+                <a href="https://youtube.com/shorts/ehr66opmkkE?si=npgshexpwq-7a6NJ" target="_blank">https://youtube.com/shorts/ehr66opmkkE?si=npgshexpwq-7a6NJ</a>
+            </div>
+        </div>
+
+        <!-- Download Shizuku -->
+        <div class="content-item" style="border-left: 4px solid #ab47bc; padding-left: 10px;">
+            <h3>🌀 LINK DOWNLOAD SHIZUKU</h3>
+            <p>Jika kalian tidak bisa download shizuku kalian bisa download disini langsung:</p>
+            <a href="https://github.com/RikkaApps/Shizuku/releases/download/v13.6.0/shizuku-v13.6.0.r1086.2650830c-release.apk" target="_blank">https://github.com/RikkaApps/Shizuku/releases/download/v13.6.0/shizuku-v13.6.0.r1086.2650830c-release.apk</a>
+        </div>
+
+    </div>
+</main>
+
+<!-- Script sederhana untuk fitur pencarian teks teks di atas -->
+<script>
+function filterText() {
+    let input = document.getElementById('searchBox').value.toLowerCase();
+    let items = document.getElementsByClassName('content-item');
+    
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].innerText.toLowerCase().includes(input)) {
+            items[i].style.display = "block";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 </body>
 </html>
